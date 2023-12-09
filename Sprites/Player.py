@@ -14,16 +14,16 @@ class Player(pygame.sprite.Sprite):
             75, 75
         )
 
-    def update(self, *args, **kwargs):
-        key = pygame.key.get_pressed()
+    def update(self):
+        self.x = 0
+        self.y = 0
 
-        # управление по Y
+        key = pygame.key.get_pressed()
         if key[pygame.K_w]:
-            self.y = self.y + self.speed
+            self.y = -5
         if key[pygame.K_s]:
-            self.y = self.y - self.speed
-        # управление по X
+            self.y = 5
         if key[pygame.K_a]:
-            self.x = self.x + self.speed
+            self.x = -5
         if key[pygame.K_d]:
-            self.x = self.x - self.speed
+            self.x = 5

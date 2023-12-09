@@ -45,7 +45,7 @@ time = 8 * config['framerate']
 score = 0
 
 while running:
-    player_sprite_group.update()
+    player.update()
     clock.tick(config['framerate'])
     if time == 0:
         running = False
