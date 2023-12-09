@@ -2,6 +2,7 @@ import random
 import json
 import pygame
 from Sprites.Player import Player
+from maze import maze
 
 f = open('config.json')
 config = json.load(f)
@@ -44,6 +45,7 @@ time = 8 * config['framerate']
 score = 0
 
 while running:
+    player_sprite_group.update()
     clock.tick(config['framerate'])
     if time == 0:
         running = False
@@ -52,10 +54,10 @@ while running:
             running = False
 
     screen.fill(config['Black'])
-
+    renderMaze(maze)
     time_rendered = font.render(f"Time: {time / config['framerate']}", True, (255, 255, 255))
     screen.blit(time_rendered, (10, 10))
-
+    player_sprite_group.draw(screen)
     pygame.display.flip()
 
 pygame.quit()

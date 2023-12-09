@@ -11,7 +11,7 @@ class Player(pygame.sprite.Sprite):
         self.speed = 1
 
         self.rect.center = (
-            300, 300
+            75, 75
         )
 
     def update(self, *args, **kwargs):
