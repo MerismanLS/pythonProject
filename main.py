@@ -17,9 +17,9 @@ screen = pygame.display.set_mode(
     (config['width'], config['height'])
 )
 
-player = Player()
-player_sprite_group = pygame.sprite.Group()
-player_sprite_group.add(player)
+
+player = pygame.sprite.Group()
+player.add(Player())
 
 running = True
 
@@ -57,7 +57,7 @@ while running:
     renderMaze(maze)
     time_rendered = font.render(f"Time: {time / config['framerate']}", True, (255, 255, 255))
     screen.blit(time_rendered, (10, 10))
-    player_sprite_group.draw(screen)
+    player.draw(screen)
     pygame.display.flip()
 
 pygame.quit()
