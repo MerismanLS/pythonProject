@@ -10,7 +10,7 @@ class Cookies(pygame.sprite.Sprite):
         self.image.fill(config["Yellow"])
         self.rect = self.image.get_rect()
         self.rect.center = (
-            0, 0
+            75, 75
         )
 
     def update(self):
