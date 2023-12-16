@@ -1,6 +1,6 @@
 {
-    "width": 500,
-    "height": 500,
+    "width": 1000,
+    "height": 1000,
     "framerate": 20,
     "Black": [0, 0, 0],
     "White": [255, 255, 255],
