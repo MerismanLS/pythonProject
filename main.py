@@ -3,7 +3,7 @@ import json
 import pygame
 from Sprites.Player import Player
 from Sprites.cookies import Cookies
-from maze import maze
+from maze import maze2
 
 with open('config.json', 'r') as cfg:
     config = json.load(cfg)
@@ -27,10 +27,10 @@ player_sprite_group.add(cookies)
 
 running = True
 
-def renderMaze(maze):
+def renderMaze(maze2):
     x = 0
     y = 0
-    for row in maze:
+    for row in maze2:
         for block in row:
             if block == 0:
             # 0 = path
@@ -43,6 +43,8 @@ def renderMaze(maze):
             elif block == 1:
             # 1 = wall
                 pygame.draw.rect(screen, config["Blue"], (x, y, 50, 50))
+            else:
+                player.rect.center = (x+25, y+25)
 
             x = x + 50
         y = y + 50
@@ -69,7 +71,7 @@ while running:
 
     player_sprite_group.update()
     screen.fill(config['Black'])
-    renderMaze(maze)
+    renderMaze(maze2)
     points = font.render(f"Points: {player.points}", True, (255, 255, 255))
     screen.blit(points, (10, 30))
     time_rendered = font.render(f"Time: {time / config['framerate']}", True, (255, 255, 255))
