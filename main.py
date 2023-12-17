@@ -103,7 +103,7 @@ while running:
     clock.tick(config['framerate'])
     if timing == 0:
         running = False
-    if player.points == 5:
+    if player.points == 200:
         num = random.randint(1, 4)
         if num == 1:
             putinwin()
