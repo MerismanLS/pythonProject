@@ -14,6 +14,7 @@ from maze import maze
 with open('config.json', 'r') as cfg:
     config = json.load(cfg)
 
+pygame.mixer.pre_init(44100, -16, 1, 512)
 pygame.init()
 pygame.mixer.init()
 pygame.font.init()
