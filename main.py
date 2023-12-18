@@ -94,8 +94,8 @@ def lavaappear(maze):
             x = 0
 
 clock = pygame.time.Clock()
-counter1 = random.randint(7, 15)
-counter2 = random.randint(3, 7)
+counter1 = random.randint(15, 20)
+counter2 = random.randint(1, 3)
 
 timing = 8 * config['framerate']
 score = 0
@@ -111,27 +111,34 @@ while running:
     if player.points == 200:
         num = random.randint(1, 4)
         if num == 1:
+            pygame.mixer.music.stop()
             putinwin()
             running = False
         elif num == 2:
+            pygame.mixer.music.stop()
             pobedawin()
             running = False
         elif num == 3:
+            pygame.mixer.music.stop()
             sigmawin()
             running = False
         else:
+            pygame.mixer.music.stop()
             fnafwin()
             running = False
 
     if player.health == 0:
         num = random.randint(1, 3)
         if num == 1:
+            pygame.mixer.music.stop()
             dsdeath()
             running = False
         elif num == 2:
+            pygame.mixer.music.stop()
             skaladeath()
             running = False
         else:
+            pygame.mixer.music.stop()
             fnafdeath()
             running = False
 
@@ -149,14 +156,14 @@ while running:
                     lava_sprite_group.update(True)
                     if player.points <= 150:
                         if player.points <= 100:
-                            counter1 = random.randint(7, 15)
-                            counter2 = random.randint(3, 7)
+                            counter1 = random.randint(15, 20)
+                            counter2 = random.randint(1, 3)
                         else:
-                            counter1 = random.randint(5, 10)
-                            counter2 = random.randint(5, 7)
+                            counter1 = random.randint(10, 15)
+                            counter2 = random.randint(3, 5)
                     else:
-                        counter1 = random.randint(3, 7)
-                        counter2 = random.randint(5, 10)
+                        counter1 = random.randint(5, 10)
+                        counter2 = random.randint(5, 7)
         if event.type == pygame.QUIT:
             running = False
 
@@ -178,15 +185,15 @@ while running:
     lava_sprite_group.update(False)
     screen.fill(config['Black'])
 
-    points = font.render(f"Points: {player.points}", True, (255, 255, 255))
+    points = font.render(f"Points: {player.points}", True, config["White"])
     screen.blit(points, (1050, 75))
-    motivation = font.render("JUST DO IT!!!", True, (255, 255, 255))
+    motivation = font.render("JUST DO IT!!!", True, config["Red"])
     screen.blit(motivation, (1050, 300))
     if runs == False:
-        seconds = font.render(f"Lava is coming in {counter1}", True, (255, 255, 255))
+        seconds = font.render(f"Lava is coming in {counter1}", True, config["White"])
         screen.blit(seconds, (1050, 150))
     else:
-        seconds = font.render(f"Lava is here for {counter2}", True, (255, 255, 255))
+        seconds = font.render(f"Lava is here for {counter2}", True, config["Red"])
         screen.blit(seconds, (1050, 150))
 
     meme_sprite_group.draw(screen)

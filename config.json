@@ -1,7 +1,7 @@
 {
     "width": 1636,
     "height": 1000,
-    "framerate": 20,
+    "framerate": 30,
     "Black": [0, 0, 0],
     "White": [255, 255, 255],
     "Red": [255, 0, 0],
