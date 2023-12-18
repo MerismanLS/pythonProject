@@ -1,13 +1,13 @@
 import json
 import random
 import pygame
-import time
 from utils import putinwin, fnafwin, fnafdeath, skaladeath, dsdeath, sigmawin, pobedawin
 from Sprites.Player import Player
 from Sprites.Cookies import Cookies
 from Sprites.Wall import Wall
 from Sprites.Lava import Lava
 from Sprites.Savezone import Savezone
+from Sprites.Meme import Meme
 from maze import maze
 
 
@@ -19,7 +19,7 @@ pygame.init()
 pygame.mixer.init()
 pygame.font.init()
 
-font = pygame.font.SysFont(pygame.font.get_default_font(), 20)
+font = pygame.font.SysFont(pygame.font.get_default_font(), 40)
 pygame.mixer.music.load("./assets/doom.mp3")
 screen = pygame.display.set_mode((config['width'], config['height']))
 pygame.mixer.music.play(-1)
@@ -35,6 +35,10 @@ player_sprite_group.add(player)
 lava = Lava()
 lava_sprite_group = pygame.sprite.Group()
 lava_sprite_group.add(lava)
+
+meme = Meme()
+meme_sprite_group = pygame.sprite.Group()
+meme_sprite_group.add(meme)
 
 savezone_sprite_group = pygame.sprite.Group()
 cookies_sprite_group = pygame.sprite.Group()
@@ -143,8 +147,16 @@ while running:
                     counter2 -= 1
                 else:
                     lava_sprite_group.update(True)
-                    counter1 = random.randint(7, 15)
-                    counter2 = random.randint(3, 7)
+                    if player.points <= 150:
+                        if player.points <= 100:
+                            counter1 = random.randint(7, 15)
+                            counter2 = random.randint(3, 7)
+                        else:
+                            counter1 = random.randint(5, 10)
+                            counter2 = random.randint(5, 7)
+                    else:
+                        counter1 = random.randint(3, 7)
+                        counter2 = random.randint(5, 10)
         if event.type == pygame.QUIT:
             running = False
 
@@ -158,6 +170,7 @@ while running:
     if hits:
         player.health -= 1
 
+    meme_sprite_group.update()
     player_sprite_group.update(maze)
     cookies_sprite_group.update()
     wall_sprite_group.update()
@@ -167,6 +180,8 @@ while running:
 
     points = font.render(f"Points: {player.points}", True, (255, 255, 255))
     screen.blit(points, (1050, 75))
+    motivation = font.render("JUST DO IT!!!", True, (255, 255, 255))
+    screen.blit(motivation, (1050, 300))
     if runs == False:
         seconds = font.render(f"Lava is coming in {counter1}", True, (255, 255, 255))
         screen.blit(seconds, (1050, 150))
@@ -174,6 +189,7 @@ while running:
         seconds = font.render(f"Lava is here for {counter2}", True, (255, 255, 255))
         screen.blit(seconds, (1050, 150))
 
+    meme_sprite_group.draw(screen)
     savezone_sprite_group.draw(screen)
     player_sprite_group.draw(screen)
     cookies_sprite_group.draw(screen)

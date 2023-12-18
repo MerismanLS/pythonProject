@@ -11,7 +11,7 @@ display_mask = pygame.mask.from_surface(pygame.Surface((config["width"], config[
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load("./assets/PacMan.png")
+        self.image = pygame.image.load("./assets/troll.png")
         self.image = pygame.transform.scale(self.image, (35, 35))
         self.rect = self.image.get_rect()
         self.x = 0
