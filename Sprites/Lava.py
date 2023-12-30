@@ -11,5 +11,5 @@ class Lava(pygame.sprite.Sprite):
         )
 
     def update(self, killing: bool):
-        if killing == True:
+        if killing:
             self.kill()
