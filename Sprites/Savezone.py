@@ -1,9 +1,4 @@
 import pygame
-import json
-
-
-with open('config.json', 'r') as cfg:
-    config = json.load(cfg)
 class Savezone(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()

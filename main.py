@@ -1,7 +1,6 @@
 import json
 import random
-import pygame
-from utils import putinwin, fnafwin, fnafdeath, skaladeath, dsdeath, sigmawin, pobedawin
+from utils import *
 from Sprites.Player import Player
 from Sprites.Cookies import Cookies
 from Sprites.Wall import Wall
@@ -113,19 +112,16 @@ while running:
         if num == 1:
             pygame.mixer.music.stop()
             putinwin()
-            running = False
         elif num == 2:
             pygame.mixer.music.stop()
             pobedawin()
-            running = False
         elif num == 3:
             pygame.mixer.music.stop()
             sigmawin()
-            running = False
         else:
             pygame.mixer.music.stop()
             fnafwin()
-            running = False
+        running = False
 
     if player.health == 0:
         num = random.randint(1, 3)

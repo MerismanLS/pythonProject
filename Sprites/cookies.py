@@ -12,6 +12,3 @@ class Cookies(pygame.sprite.Sprite):
         self.rect.center = (
             75, 75
         )
-
-    def update(self):
-        pass
