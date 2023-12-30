@@ -1,5 +1,5 @@
-import json
 import random
+import json
 from utils import *
 from Sprites.Player import Player
 from Sprites.Cookies import Cookies
